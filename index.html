@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfólio – Vinicius Ferreira</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
+    header { background: #2c3e50; color: #fff; padding: 20px; text-align: center; }
+    header h1 { margin: 0; font-size: 24px; }
+    header p { margin: 5px 0 0 0; font-size: 14px; color: #bdc3c7; }
+    .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
+    section { margin-bottom: 30px; }
+    h2 { border-bottom: 2px solid #2980b9; padding-bottom: 5px; margin-bottom: 15px; color: #2980b9; }
+    .repo { background: #fff; border-radius: 8px; padding: 10px; margin-bottom: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .repo a { color: #2c3e50; font-weight: bold; text-decoration: none; }
+    .repo a:hover { color: #2980b9; }
+    .contact a { color: #2980b9; text-decoration: none; margin-right: 15px; }
+    .contact a:hover { text-decoration: underline; }
+    @media(max-width: 600px){
+      header h1 { font-size: 20px; }
+      header p { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Vinicius do Nascimento Ferreira</h1>
+    <p>Analista de Sistemas / TI</p>
+  </header>
+
+  <div class="container">
+    <section id="about">
+      <h2>Sobre Mim</h2>
+      <p>Tecnólogo em Análise e Desenvolvimento de Sistemas, com experiência em suporte técnico, análise de sistemas ERP e desenvolvimento de soluções. Proativo, com excelente comunicação e foco em resultados.</p>
+      <div class="contact">
+        <a href="mailto:nascimento.13.v@gmail.com">Email</a>
+        <a href="https://linkedin.com/in/vinicius-nascimento-ferreira-9407bb197" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Vnf13" target="_blank">GitHub</a>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projetos GitHub</h2>
+      <div id="repos">Carregando repositórios...</div>
+    </section>
+  </div>
+
+  <script>
+    const username = "Vnf13";
+    const repoContainer = document.getElementById("repos");
+
+    fetch(`https://api.github.com/users/${username}/repos?sort=updated`)
+      .then(res => res.json())
+      .then(data => {
+        repoContainer.innerHTML = "";
+        data.forEach(repo => {
+          const div = document.createElement("div");
+          div.className = "repo";
+          div.innerHTML = `<a href="${repo.html_url}" target="_blank">${repo.name}</a>
+                           <p>${repo.description ? repo.description : "Sem descrição"}</p>`;
+          repoContainer.appendChild(div);
+        });
+      })
+      .catch(err => {
+        repoContainer.innerHTML = "Não foi possível carregar os repositórios.";
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
