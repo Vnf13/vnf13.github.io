@@ -8,8 +8,8 @@
 body {
   font-family: "Segoe UI", Arial, sans-serif;
   line-height: 1.6;
-  background: #fdfdfd;
-  color: #333;
+  background: #303030; /* fundo geral */
+  color: #fff; /* texto padrão */
 }
 
 /* Navbar */
@@ -29,6 +29,14 @@ header {
 
 .navbar h1 {
   font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar .logo {
+  width: 32px;
+  height: auto;
 }
 
 .navbar ul {
@@ -53,7 +61,7 @@ header {
 }
 
 .bg-light {
-  background: #f0f0f0;
+  background: #383838; /* contraste para seções */
 }
 
 .container {
@@ -76,23 +84,85 @@ header {
   align-items: center;
 }
 
-/* Projetos */
+/* Projetos - Grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.5rem;
 }
 
+/* Cards Projetos */
 .card {
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #121212;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  z-index: 2;
+  position: relative;
+}
+
+.card h3 a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.card h3 a:hover {
+  text-decoration: underline;
+}
+
+.card p {
+  margin-bottom: 0.5rem;
+  z-index: 2;
+  position: relative;
+  color: #fff;
+}
+
+.card p.language {
+  color: #f9b234;
+}
+
+.card p.language strong {
+  color: #f9b234;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  top: -60px;
+  right: -60px;
+  z-index: 1;
+  transition: all 0.5s ease;
+  opacity: 0.8;
+}
+
+.card:nth-child(6n+1)::before { background-color: #f9b234; }
+.card:nth-child(6n+2)::before { background-color: #3ecd5e; }
+.card:nth-child(6n+3)::before { background-color: #e44002; }
+.card:nth-child(6n+4)::before { background-color: #952aff; }
+.card:nth-child(6n+5)::before { background-color: #cd3e94; }
+.card:nth-child(6n+6)::before { background-color: #4c49ea; }
+
+.card:hover::before {
+  transform: scale(10);
+  opacity: 0.2;
 }
 
 /* Contato */
@@ -119,4 +189,22 @@ footer {
   color: #fff;
   padding: 1rem 0;
   margin-top: 2rem;
+}
+
+/* Responsividade */
+@media only screen and (max-width: 767px) {
+  .card h3 {
+    font-size: 1.25rem;
+  }
+  .card p {
+    font-size: 0.9rem;
+  }
+  #sobre .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .perfil {
+    margin-bottom: 1.5rem;
+    margin-right: 0;
+  }
 }

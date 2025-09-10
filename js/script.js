@@ -3,7 +3,7 @@ const repoContainer = document.querySelector(".grid");
 repoContainer.innerHTML = "Carregando repositórios...";
 
 // Carrega a lista de repos a ignorar
-fetch("ignore-repos.json")
+fetch("../ignore-repos.json")
   .then(res => res.json())
   .then(ignoreList => {
 

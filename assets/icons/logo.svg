@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="white" stroke-width="20" stroke-linejoin="round">
+    <!-- Orelhas -->
+    <path d="M128 200 L128 80 L224 200" />
+    <path d="M384 200 L384 80 L288 200" />
+
+    <!-- Cabeça e lateral do focinho -->
+    <path d="M128 200 L256 320 L384 200" />
+    
+    <!-- Focinho inferior -->
+    <path d="M196 320 L196 400 L256 460 L316 400 L316 320" />
+
+    <!-- Olhos / detalhe central -->
+    <path d="M224 200 L288 200 L256 240 Z" />
+  </g>
+</svg>
