@@ -27,16 +27,20 @@ if (canvas) {
             const labels = Object.keys(langTotals);
             const dataValues = Object.values(langTotals);
 
+            // Função para gerar cor aleatória em HSL
+            function randomColor() {
+                return `hsl(${Math.floor(Math.random() * 360)}, 70%, 50%)`;
+            }
+
+            // Gera uma cor para cada linguagem
+            const backgroundColors = labels.map(() => randomColor());
+
             const data = {
                 labels: labels,
                 datasets: [{
                     label: 'Uso de Linguagens',
                     data: dataValues,
-                    backgroundColor: [
-                        '#f9b234', '#3ecd5e', '#e44002', '#952aff',
-                        '#cd3e94', '#4c49ea', '#ffaa00', '#00aaff',
-                        '#ff00aa', '#aa00ff', '#00ffaa', '#ff5555'
-                    ],
+                    backgroundColor: backgroundColors,
                     borderColor: '#383838',
                     borderWidth: 2
                 }]
