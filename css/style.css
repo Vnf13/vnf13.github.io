@@ -260,4 +260,16 @@ footer {
   .card p {
     font-size: 0.9rem;
   }
+  
+  #certificados .card::before {
+    background-color: var(--card-green); /* cor específica para certificados */
+}
+
+.card-link {
+    text-decoration: none; /* remove sublinhado */
+    color: inherit;        /* mantém cor do card */
+    display: block;        /* faz o link ocupar todo o card */
+}
+
+
 }
